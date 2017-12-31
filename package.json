@@ -1,0 +1,16 @@
+{
+  "name": "productsserver",
+  "version": "1.0.0",
+  "description": "API Rest Knockouts_js",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "deivisjl",
+  "license": "MIT",
+  "dependencies": {
+    "nodemon": "^1.14.6",
+    "restify": "^6.3.4"
+  }
+}

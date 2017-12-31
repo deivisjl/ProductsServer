@@ -1,0 +1,77 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html" />
+    <title>Knockout : Products Grid</title>
+    <link rel="stylesheet" href="WebContent/css/bootstrap.css">
+    <script type="text/javascript" src="javascript/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="javascript/knockout-3.4.2.js"></script>
+    <script type="text/javascript" src="javascript/knockout.validation.min.js"></script>
+    <script type="text/javascript" src="javascript/configureknockout.js"></script>
+    <script type="text/javascript" src="WebContent/js/bootstrap.js"></script>
+    <script type="text/javascript" src="javascript/productsclient.js"></script>
+    <script type="text/javascript" src="javascript/productsgrid.js"></script>
+</head>
+<body style="margin-top: 25px;">
+<div class="container">
+    <div class="panel panel-primary">
+        <div class="panel-heading text-center"><strong>Products</strong></div>
+        <div class="panel-body">
+
+            <br />
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Price</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody data-bind="foreach: ProductsGrid.products">
+                <tr data-bind="if: displayMode() === ProductsGrid.displayMode.view">
+                    <td data-bind="text: data.id"></td>
+                    <td data-bind="text: data.name"></td>
+                    <td data-bind="text: data.description"></td>
+                    <td data-bind="text: data.price"></td>
+                    <td>
+                        <a href data-bind="click: ProductsGrid.deleteProduct" class="btn btn-danger">Delete</a>
+                        <a href data-bind="click: ProductsGrid.editProduct" class="btn btn-success">Edit</a>
+                    </td>
+                </tr>
+
+
+
+
+                <tr data-bind="if: displayMode() === ProductsGrid.displayMode.edit">
+                    <td data-bind="text: data.id">
+                    </td>
+                    <td>
+                        <input type="text" class="form-control" data-bind="value:data.name" />
+                    </td>
+                    <td>
+                        <input type="text" class="form-control" data-bind="value:data.description" />
+                    </td>
+                    <td>
+                        <input type="text" class="form-control" data-bind="value:data.price" />
+                    </td>
+                    <td>
+                        <a href data-bind="visible: data.id() != null, click:ProductsGrid.updateProduct" class="btn btn-success">Update</a>
+                        <a href data-bind="visible: data.id() == null, click:ProductsGrid.saveProduct" class="btn btn-primary">Save</a> | <a href data-bind="click:ProductsGrid.deleteProduct" class="btn btn-danger">Delete</a>
+                    </td>
+                </tr>
+
+                </tbody>
+            </table>
+
+
+            <div class="clearfix"></div>
+            <a href data-bind="click: ProductsGrid.addProduct" class="btn btn-primary pull-right">+ Add a Product</a>
+        </div>
+    </div>
+
+
+</div>
+</body>
+</html>
